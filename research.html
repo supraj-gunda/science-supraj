@@ -7,11 +7,21 @@
 <meta content="Research by Supraj Gunda in computational biology, synthetic biology, climate science, mathematical biology, and computer vision." name="description"/>
 <meta content="#f5f0e6" name="theme-color"/>
 <title>Research | Supraj Gunda</title>
+<!--
+  FAVICON: every page points to assets/img/favicon.svg.
+  Replace that one SVG file to change the browser-tab icon site-wide.
+-->
 <link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="assets/css/styles.css" rel="stylesheet"/>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
+<!--
+  SHARED TOP NAVIGATION
+  Keep this header/navigation block identical across the HTML pages. On each page,
+  aria-current="page" belongs only on that page's active navigation link.
+  Mobile open/close behavior is handled in assets/js/main.js.
+-->
 <header class="site-header">
 <div class="nav-shell">
 <a aria-label="Supraj Gunda home" class="site-name" href="index.html">
@@ -30,44 +40,63 @@
 <div><h1>Research</h1></div>
 </div>
 </section>
-<section class="project-list"><article class="project-band band-paper reveal">
+<!--
+  RESEARCH PROJECTS — HOW TO ADD ONE
+  1. Duplicate one complete <article class="project-band ..."> block inside this section.
+  2. Increment .project-number and edit the lab name in .project-lab. Each <span> becomes
+     its own line, e.g. <span>Atkinson</span><span>Lab</span>.
+  3. Edit the <h2>, bullet list, and .project-tags.
+  4. For a PDF poster/presentation, use a .media-frame with data-document="assets/docs/file.pdf".
+     assets/js/embed-loader.js turns that element into an iframe automatically.
+     For an external publication, use the .online-paper-link pattern instead.
+  5. Choose any existing band color class (band-paper, band-softblue, band-softgreen,
+     band-softpeach, or band-mint) to keep the alternating horizontal-banner look.
+-->
+<section class="project-list"><!-- Project 01: Rivera Lab -->
+<article class="project-band band-paper reveal">
 <div class="project-meta"><span class="project-number">01</span><p class="project-lab"><span>Rivera</span><span>Lab</span></p></div>
 <div class="project-copy"><h2>Wildlife Trade Research</h2><ul><li>Modeled the snow leopard social-ecological system using MentalModeler to identify interventions for curbing illegal wildlife trade.</li><li>Co-authored “Teaching the Wildlife Trade: A Social-Ecological Systems Approach” with Dr. Christian Rivera, published in the Journal of Environmental Sciences (2025).</li></ul><p class="project-tags">Systems Modeling · Conservation · Scientific Communication</p></div>
 <div class="project-resource">
 <div class="online-paper-link-wrap">
-
 <a class="online-paper-link" href="https://link.springer.com/article/10.1007/s13412-026-01100-4" rel="noreferrer" target="_blank">Open the published paper <span aria-hidden="true">↗</span></a>
 </div>
 </div>
-</article><article class="project-band band-softblue reveal">
+</article><!-- Project 02: Atkinson Lab -->
+<article class="project-band band-softblue reveal">
 <div class="project-meta"><span class="project-number">02</span><p class="project-lab"><span>Atkinson</span><span>Lab</span></p></div>
 <div class="project-copy"><h2>Recording Plasmid Transfer</h2><ul><li>Designed a CRISPR-based framework to track conjugative plasmid transfer across microbial communities by combining Record-Seq and 16S rRNA barcoding.</li><li>Tested using MS2 RNA-binding protein/RBS interactions to bias CRISPR spacer acquisition.</li><li>Applied the SENECA assay to confirm that introducing MS2 RBP did not disrupt spacer acquisition, supporting further integration of RAM and toehold-switch controls.</li></ul><p class="project-tags">CRISPR · Synthetic Biology · Microbial Communities</p></div>
 <div class="project-resource"><div class="media-frame" data-document="assets/docs/atkinson-lab-poster.pdf" data-label="Atkinson Lab research poster"></div></div>
-</article><article class="project-band band-softgreen reveal">
+</article><!-- Project 03: Wingreen Lab -->
+<article class="project-band band-softgreen reveal">
 <div class="project-meta"><span class="project-number">03</span><p class="project-lab"><span>Wingreen</span><span>Lab</span></p></div>
 <div class="project-copy"><h2>Dynamic Metabolon Formation</h2><ul><li>Developed a reaction–diffusion model of a two-step metabolic pathway with enzyme phase separation.</li><li>Demonstrated that local product demand can drive enzyme self-organization into dynamic metabolons.</li></ul><p class="project-tags">Reaction–Diffusion · Phase Separation · Mathematical Biology</p></div>
 <div class="project-resource"><div class="media-frame" data-document="assets/docs/wingreen-lab-poster.pdf" data-label="Wingreen Lab research poster"></div></div>
-</article><article class="project-band band-softpeach reveal">
+</article><!-- Project 04: Deutsch Lab -->
+<article class="project-band band-softpeach reveal">
 <div class="project-meta"><span class="project-number">04</span><p class="project-lab"><span>Deutsch</span><span>Lab</span></p></div>
 <div class="project-copy"><h2>Predicting Coral Bleaching</h2><ul><li>Constructed a novel coral-bleaching dataset by integrating satellite observations with in situ oceanographic measurements.</li><li>Developed and evaluated Random Forest, RNN, and Transformer models to predict coral-bleaching events.</li><li>Contributing to a research manuscript under the guidance of Dr. Curtis Deutsch.</li></ul><p class="project-tags">Machine Learning · Climate Science · Time Series</p></div>
 <div class="project-resource"><div class="media-frame" data-document="assets/docs/deutsch-lab-presentation.pdf" data-label="Deutsch Lab research presentation"></div></div>
-</article><article class="project-band band-paper reveal">
+</article>
+<!-- Project 05: Puchalla Lab -->
+<article class="project-band band-paper reveal">
 <div class="project-meta"><span class="project-number">05</span><p class="project-lab"><span>Puchalla</span><span>Lab</span></p></div>
 <div class="project-copy"><h2>RGB-D Vision Transformers</h2><ul><li>Designed custom RGB-D early-fusion Vision Transformers that integrated depth-sensor data with RGB imagery.</li><li>Benchmarked model performance against CNN baselines using data captured from commercial depth cameras.</li><li>Developed two self-collected datasets.</li></ul><p class="project-tags">Computer Vision · Transformers · Dataset Development</p></div>
 <div class="project-resource"><div class="media-frame" data-document="assets/docs/puchalla-lab-poster.pdf" data-label="Puchalla Lab research summary"></div></div>
 </article></section>
 </main>
+<!--
+  SHARED CONTACT FOOTER
+  Keep this contact block in sync across all pages if an email/social link changes.
+  The inline SVGs are only the small icons; the visible link text and href values are safe to edit.
+-->
 <footer class="site-footer band band-ink">
 <div class="band-inner footer-grid footer-grid-compact">
 <div><p class="micro-label light">Contact</p></div>
-<div class="footer-contact">
-<a href="mailto:sgunda917@gmail.com"><span aria-hidden="true" class="contact-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><path d="M3.5 5.5h17v13h-17z"></path><path d="m4 6 8 6 8-6"></path></svg></span><span>sgunda917@gmail.com</span><span aria-hidden="true" class="contact-arrow">↗</span></a>
-<a href="https://www.instagram.com/suprajgunda/" rel="noreferrer" target="_blank"><span aria-hidden="true" class="contact-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><rect height="17" rx="5" width="17" x="3.5" y="3.5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.7" fill="currentColor" r="1" stroke="none"></circle></svg></span><span>@suprajgunda</span><span aria-hidden="true" class="contact-arrow">↗</span></a>
-<a href="https://supraj-gunda.github.io/studio-supraj/index.html" rel="noreferrer" target="_blank"><span aria-hidden="true" class="contact-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><path d="M12 3.2a8.8 8.8 0 1 0 0 17.6h1.4a1.8 1.8 0 0 0 0-3.6h-.8a1.8 1.8 0 0 1 0-3.6H15a5.8 5.8 0 0 0 0-11.6z"></path><circle cx="7.7" cy="10" fill="currentColor" r="1" stroke="none"></circle><circle cx="9.8" cy="6.7" fill="currentColor" r="1" stroke="none"></circle><circle cx="14" cy="6.4" fill="currentColor" r="1" stroke="none"></circle><circle cx="17" cy="9" fill="currentColor" r="1" stroke="none"></circle></svg></span><span>Art portfolio</span><span aria-hidden="true" class="contact-arrow">↗</span></a>
-</div>
+<div class="footer-contact"><a href="mailto:sgunda917@gmail.com"><span aria-hidden="true" class="contact-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><path d="M3.5 5.5h17v13h-17z"></path><path d="m4 6 8 6 8-6"></path></svg></span><span>sgunda917@gmail.com</span><span aria-hidden="true" class="contact-arrow">↗</span></a><a href="https://www.linkedin.com/in/supraj-gunda/" rel="noreferrer" target="_blank"><span aria-hidden="true" class="contact-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><rect height="17" rx="2.5" width="17" x="3.5" y="3.5"></rect><path d="M8 10v6"></path><path d="M8 7.4v.1"></path><path d="M11.5 16v-3.5c0-1.6 1-2.7 2.5-2.7 1.6 0 2.5 1.1 2.5 2.9V16"></path><path d="M11.5 10v6"></path></svg></span><span>LinkedIn</span><span aria-hidden="true" class="contact-arrow">↗</span></a><a href="https://www.instagram.com/suprajgunda/" rel="noreferrer" target="_blank"><span aria-hidden="true" class="contact-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><rect height="17" rx="5" width="17" x="3.5" y="3.5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.7" fill="currentColor" r="1" stroke="none"></circle></svg></span><span>@suprajgunda</span><span aria-hidden="true" class="contact-arrow">↗</span></a><a href="https://supraj-gunda.github.io/studio-supraj/index.html" rel="noreferrer" target="_blank"><span aria-hidden="true" class="contact-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><path d="M12 3.2a8.8 8.8 0 1 0 0 17.6h1.4a1.8 1.8 0 0 0 0-3.6h-.8a1.8 1.8 0 0 1 0-3.6H15a5.8 5.8 0 0 0 0-11.6z"></path><circle cx="7.7" cy="10" fill="currentColor" r="1" stroke="none"></circle><circle cx="9.8" cy="6.7" fill="currentColor" r="1" stroke="none"></circle><circle cx="14" cy="6.4" fill="currentColor" r="1" stroke="none"></circle><circle cx="17" cy="9" fill="currentColor" r="1" stroke="none"></circle></svg></span><span>Supraj's Art Website</span><span aria-hidden="true" class="contact-arrow">↗</span></a></div>
 </div>
 </footer>
 <script src="assets/js/main.js"></script>
+<!-- embed-loader.js converts each [data-document] placeholder into a direct PDF iframe. -->
 <script src="assets/js/embed-loader.js"></script>
 </body>
 </html>

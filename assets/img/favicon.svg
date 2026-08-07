@@ -1,14 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-      <stop stop-color="#0d766e"/>
-      <stop offset="1" stop-color="#315d8b"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="18" fill="url(#g)"/>
-  <path d="M22 18c8 0 12 5 12 12s-4 12-12 12m20-24c-8 0-12 5-12 12s4 12 12 12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="22" cy="18" r="3" fill="#fff"/>
-  <circle cx="22" cy="42" r="3" fill="#fff"/>
-  <circle cx="42" cy="18" r="3" fill="#fff"/>
-  <circle cx="42" cy="42" r="3" fill="#fff"/>
+<!--
+  Site favicon: a simplified Erlenmeyer flask using the portfolio's ink/lime palette.
+  To change the tab icon later, replace this file but keep the same filename so every page updates automatically.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Flask">
+  <rect width="64" height="64" rx="14" fill="#11110f"/>
+  <path d="M25 12h14M28 12v14L16.5 47.5A5 5 0 0 0 20.9 55h22.2a5 5 0 0 0 4.4-7.5L36 26V12" fill="none" stroke="#fffdf7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M21.5 43h21l5 9a5 5 0 0 1-4.4 3H20.9a5 5 0 0 1-4.4-3z" fill="#dfff43"/>
+  <circle cx="27" cy="47" r="2" fill="#11110f" opacity=".55"/>
+  <circle cx="36" cy="50" r="1.5" fill="#11110f" opacity=".55"/>
 </svg>

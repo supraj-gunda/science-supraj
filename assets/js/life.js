@@ -1,3 +1,16 @@
+/*
+  Conway's Game of Life simulation used at the top of index.html.
+
+  EASY THINGS TO CUSTOMIZE
+  - Initial/random cell density: randomize(density = 0.19)
+  - Simulation speed: the 120 ms threshold inside animationLoop()
+  - Cell/grid colors: ctx.fillStyle and ctx.strokeStyle inside draw()
+  - Preset Pattern button options: add/edit objects in the patterns array
+  - Approximate grid density on different screen sizes: targetCell inside fitCanvas()
+
+  The grid wraps at the edges (toroidal topology), so cells on the left can interact
+  with cells on the right, and cells at the top can interact with cells at the bottom.
+*/
 (() => {
   const canvas = document.getElementById('life-canvas');
   if (!canvas) return;
@@ -7,9 +20,11 @@
   const randomButton = document.querySelector('[data-life-random]');
   const clearButton = document.querySelector('[data-life-clear]');
   const patternButton = document.querySelector('[data-life-pattern]');
+  // Optional status hooks. They are harmless if the matching elements are not present in index.html.
   const generationNode = document.querySelector('[data-life-generation]');
   const statusNode = document.querySelector('[data-life-status]');
 
+  // Starting dimensions are immediately recalculated to fit the canvas.
   let cols = 42;
   let rows = 34;
   let grid = [];
@@ -20,6 +35,8 @@
   let drawingValue = 1;
   let resizeTimer;
 
+  // Presets shown one-at-a-time when the visitor presses the Pattern button.
+  // Add another { name, cells: [[x, y], ...] } object here to extend the cycle.
   const patterns = [
     {
       name: 'glider',
@@ -40,6 +57,7 @@
     return Array.from({ length: rows }, () => Array(cols).fill(0));
   }
 
+  // density is the probability that each cell starts alive. 0.19 = 19%.
   function randomize(density = 0.19) {
     grid = Array.from({ length: rows }, () =>
       Array.from({ length: cols }, () => (Math.random() < density ? 1 : 0))
@@ -48,6 +66,7 @@
     draw();
   }
 
+  // Count the eight neighboring cells. Modulo arithmetic makes the board wrap at edges.
   function countNeighbors(x, y) {
     let count = 0;
     for (let dy = -1; dy <= 1; dy += 1) {
@@ -61,6 +80,7 @@
     return count;
   }
 
+  // Apply Conway's rules once: survive with 2–3 neighbors; birth with exactly 3.
   function step() {
     const next = emptyGrid();
     for (let y = 0; y < rows; y += 1) {
@@ -75,6 +95,7 @@
     generation += 1;
   }
 
+  // Match the canvas's pixel resolution and logical grid size to its responsive CSS size.
   function fitCanvas() {
     const rect = canvas.getBoundingClientRect();
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -82,6 +103,7 @@
     canvas.height = Math.max(1, Math.floor(rect.height * dpr));
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
+    // Smaller targetCell values create more, smaller cells.
     const targetCell = rect.width < 480 ? 11 : 13;
     const nextCols = Math.max(24, Math.floor(rect.width / targetCell));
     const nextRows = Math.max(20, Math.floor(rect.height / targetCell));
@@ -105,6 +127,7 @@
     draw();
   }
 
+  // Draw the dark background, faint grid lines, then each living lime-green cell.
   function draw() {
     const rect = canvas.getBoundingClientRect();
     const cellW = rect.width / cols;
@@ -147,6 +170,7 @@
   }
 
   function animationLoop(timestamp) {
+    // 120 ms ≈ 8 simulation generations per second. Increase this number to slow it down.
     if (running && timestamp - lastStep > 120) {
       step();
       draw();
@@ -174,6 +198,7 @@
     draw();
   }
 
+  // Clear the board and center the next preset from the patterns array.
   function loadPattern() {
     grid = emptyGrid();
     const pattern = patterns[patternIndex % patterns.length];
@@ -202,6 +227,8 @@
   });
   patternButton?.addEventListener('click', loadPattern);
 
+  // Pointer drawing works for mouse, pen, and touch. Clicking a live cell begins erasing;
+  // clicking a dead cell begins drawing, and dragging keeps that same paint mode.
   canvas.addEventListener('pointerdown', (event) => {
     drawing = true;
     canvas.setPointerCapture(event.pointerId);
@@ -215,11 +242,13 @@
   canvas.addEventListener('pointerup', () => { drawing = false; });
   canvas.addEventListener('pointercancel', () => { drawing = false; });
 
+  // Debounce resize work so the grid is not rebuilt on every single resize event.
   window.addEventListener('resize', () => {
     window.clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(fitCanvas, 120);
   });
 
+  // Initial state: fit the board, seed it randomly, and start animating.
   grid = emptyGrid();
   fitCanvas();
   randomize();

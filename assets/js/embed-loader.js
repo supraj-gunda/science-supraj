@@ -1,3 +1,14 @@
+/*
+  Direct PDF embed helper.
+
+  Any HTML element with:
+    data-document="assets/docs/example.pdf"
+    data-label="Accessible description"
+  is replaced with an iframe pointing directly at that PDF.
+
+  This intentionally does NOT check the file with fetch/HEAD first. Direct loading works
+  both on GitHub Pages and when previewing the site locally with file:// URLs.
+*/
 const frames = document.querySelectorAll('[data-document]');
 
 frames.forEach((frame) => {
@@ -13,12 +24,3 @@ frames.forEach((frame) => {
 
   frame.replaceChildren(iframe);
 });
-
-const cvDownload = document.querySelector('[data-cv-download]');
-if (cvDownload) {
-  const path = cvDownload.getAttribute('href');
-  if (path) {
-    cvDownload.removeAttribute('aria-disabled');
-    cvDownload.removeAttribute('title');
-  }
-}

@@ -7,11 +7,21 @@
 <meta content="Honors and awards received by Supraj Gunda." name="description"/>
 <meta content="#f5f0e6" name="theme-color"/>
 <title>Honors | Supraj Gunda</title>
+<!--
+  FAVICON: every page points to assets/img/favicon.svg.
+  Replace that one SVG file to change the browser-tab icon site-wide.
+-->
 <link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="assets/css/styles.css" rel="stylesheet"/>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
+<!--
+  SHARED TOP NAVIGATION
+  Keep this header/navigation block identical across the HTML pages. On each page,
+  aria-current="page" belongs only on that page's active navigation link.
+  Mobile open/close behavior is handled in assets/js/main.js.
+-->
 <header class="site-header">
 <div class="nav-shell">
 <a aria-label="Supraj Gunda home" class="site-name" href="index.html">
@@ -30,32 +40,45 @@
 <div><h1>Honors</h1></div>
 </div>
 </section>
-<section class="honor-list"><article class="honor-band band-paper reveal">
+<!--
+  HONORS — HOW TO ADD ONE
+  Duplicate one complete .honor-band article and increment .honor-number. Edit the <h2>,
+  issuer, description, and date. The issuer uses classes "micro-label honor-issuer";
+  the square brackets are added automatically by CSS, so do not type [ ] in the HTML.
+  Swap the band-* class if you want to continue the alternating banner colors.
+-->
+<section class="honor-list"><!-- Honor 01 -->
+<article class="honor-band band-paper reveal">
 <div class="honor-number">01</div>
 <div class="honor-title"><h2>Tau Beta Pi Association Scholarship</h2></div>
 <div class="honor-copy"><p class="micro-label honor-issuer">Tau Beta Pi Engineering Honors Society</p><p>Selected as a Tau Beta Pi Scholarship recipient in recognition of academic excellence, leadership, service, and the potential to make meaningful future contributions to engineering.</p><span>June 2026</span></div>
-</article><article class="honor-band band-softblue reveal">
+</article><!-- Honor 02 -->
+<article class="honor-band band-softblue reveal">
 <div class="honor-number">02</div>
 <div class="honor-title"><h2>Excellence in Research Award</h2></div>
 <div class="honor-copy"><p class="micro-label honor-issuer">NJ Governor’s STEM Scholars</p><p>Recognized for research on tumor-associated macrophages. Determined which ligands activate CC chemokine receptors and used CRISPR-Cas9 to knock out a chemokine receptor.</p><span>July 2023</span></div>
-</article><article class="honor-band band-softgreen reveal">
+</article><!-- Honor 03 -->
+<article class="honor-band band-softgreen reveal">
 <div class="honor-number">03</div>
 <div class="honor-title"><h2>New Jersey Delegate</h2></div>
 <div class="honor-copy"><p class="micro-label honor-issuer">National Youth Science Camp</p><p>Selected as one of two delegates to represent the state of New Jersey.</p><span>June 2023</span></div>
-</article><article class="honor-band band-softpeach reveal">
+</article><!-- Honor 04 -->
+<article class="honor-band band-softpeach reveal">
 <div class="honor-number">04</div>
 <div class="honor-title"><h2>State Seal of Biliteracy in Spanish</h2></div>
 <div class="honor-copy"><p class="micro-label honor-issuer">New Jersey Department of Education</p><p>Awarded to graduating seniors who demonstrate high proficiency in English and at least one additional world language.</p><span>May 2023</span></div>
-</article></section>
+</article><!-- Honor 05: placeholder ready for your next award -->
+<article class="honor-band band-mint reveal"><div class="honor-number">05</div><div class="honor-title"><h2>Honor Title</h2></div><div class="honor-copy"><p class="micro-label honor-issuer">Issuing Organization</p><p>Add honor description here.</p><span>Date</span></div></article></section>
 </main>
+<!--
+  SHARED CONTACT FOOTER
+  Keep this contact block in sync across all pages if an email/social link changes.
+  The inline SVGs are only the small icons; the visible link text and href values are safe to edit.
+-->
 <footer class="site-footer band band-ink">
 <div class="band-inner footer-grid footer-grid-compact">
 <div><p class="micro-label light">Contact</p></div>
-<div class="footer-contact">
-<a href="mailto:sgunda917@gmail.com"><span aria-hidden="true" class="contact-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><path d="M3.5 5.5h17v13h-17z"></path><path d="m4 6 8 6 8-6"></path></svg></span><span>sgunda917@gmail.com</span><span aria-hidden="true" class="contact-arrow">↗</span></a>
-<a href="https://www.instagram.com/suprajgunda/" rel="noreferrer" target="_blank"><span aria-hidden="true" class="contact-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><rect height="17" rx="5" width="17" x="3.5" y="3.5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.7" fill="currentColor" r="1" stroke="none"></circle></svg></span><span>@suprajgunda</span><span aria-hidden="true" class="contact-arrow">↗</span></a>
-<a href="https://supraj-gunda.github.io/studio-supraj/index.html" rel="noreferrer" target="_blank"><span aria-hidden="true" class="contact-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><path d="M12 3.2a8.8 8.8 0 1 0 0 17.6h1.4a1.8 1.8 0 0 0 0-3.6h-.8a1.8 1.8 0 0 1 0-3.6H15a5.8 5.8 0 0 0 0-11.6z"></path><circle cx="7.7" cy="10" fill="currentColor" r="1" stroke="none"></circle><circle cx="9.8" cy="6.7" fill="currentColor" r="1" stroke="none"></circle><circle cx="14" cy="6.4" fill="currentColor" r="1" stroke="none"></circle><circle cx="17" cy="9" fill="currentColor" r="1" stroke="none"></circle></svg></span><span>Art portfolio</span><span aria-hidden="true" class="contact-arrow">↗</span></a>
-</div>
+<div class="footer-contact"><a href="mailto:sgunda917@gmail.com"><span aria-hidden="true" class="contact-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><path d="M3.5 5.5h17v13h-17z"></path><path d="m4 6 8 6 8-6"></path></svg></span><span>sgunda917@gmail.com</span><span aria-hidden="true" class="contact-arrow">↗</span></a><a href="https://www.linkedin.com/in/supraj-gunda/" rel="noreferrer" target="_blank"><span aria-hidden="true" class="contact-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><rect height="17" rx="2.5" width="17" x="3.5" y="3.5"></rect><path d="M8 10v6"></path><path d="M8 7.4v.1"></path><path d="M11.5 16v-3.5c0-1.6 1-2.7 2.5-2.7 1.6 0 2.5 1.1 2.5 2.9V16"></path><path d="M11.5 10v6"></path></svg></span><span>LinkedIn</span><span aria-hidden="true" class="contact-arrow">↗</span></a><a href="https://www.instagram.com/suprajgunda/" rel="noreferrer" target="_blank"><span aria-hidden="true" class="contact-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><rect height="17" rx="5" width="17" x="3.5" y="3.5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.7" fill="currentColor" r="1" stroke="none"></circle></svg></span><span>@suprajgunda</span><span aria-hidden="true" class="contact-arrow">↗</span></a><a href="https://supraj-gunda.github.io/studio-supraj/index.html" rel="noreferrer" target="_blank"><span aria-hidden="true" class="contact-icon"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24"><path d="M12 3.2a8.8 8.8 0 1 0 0 17.6h1.4a1.8 1.8 0 0 0 0-3.6h-.8a1.8 1.8 0 0 1 0-3.6H15a5.8 5.8 0 0 0 0-11.6z"></path><circle cx="7.7" cy="10" fill="currentColor" r="1" stroke="none"></circle><circle cx="9.8" cy="6.7" fill="currentColor" r="1" stroke="none"></circle><circle cx="14" cy="6.4" fill="currentColor" r="1" stroke="none"></circle><circle cx="17" cy="9" fill="currentColor" r="1" stroke="none"></circle></svg></span><span>Supraj's Art Website</span><span aria-hidden="true" class="contact-arrow">↗</span></a></div>
 </div>
 </footer>
 <script src="assets/js/main.js"></script>

@@ -1,3 +1,12 @@
+/*
+  About-page lab photo carousel.
+
+  EDITING QUICK GUIDE
+  - Add/remove slides in index.html by adding/removing <figure data-carousel-slide> blocks.
+  - The slide counter is calculated automatically; you never need to edit "01 / 06" by hand.
+  - Change AUTO_ROTATE_DELAY below to control the automatic rotation speed (milliseconds).
+  - Previous/Next intentionally wrap: first -> previous -> last, and last -> next -> first.
+*/
 const carousels = document.querySelectorAll('[data-photo-carousel]');
 
 carousels.forEach((carousel) => {
@@ -11,7 +20,7 @@ carousels.forEach((carousel) => {
 
   if (!viewport || !track || slides.length === 0) return;
 
-  const AUTO_ROTATE_DELAY = 5000;
+  const AUTO_ROTATE_DELAY = 5000; // 5 seconds per photo.
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let currentIndex = 0;
   let touchStartX = null;
@@ -19,11 +28,14 @@ carousels.forEach((carousel) => {
 
   if (totalLabel) totalLabel.textContent = String(slides.length).padStart(2, '0');
 
+  // Distance between the left edges of two neighboring slides.
   const slideStep = () => {
     if (slides.length < 2) return viewport.clientWidth;
     return slides[1].offsetLeft - slides[0].offsetLeft;
   };
 
+  // The wide desktop carousel can show part of a neighboring image, so the last scroll
+  // position is based on actual track/viewport width rather than slides.length - 1.
   const maxIndex = () => {
     const step = slideStep();
     if (!step) return slides.length - 1;
@@ -34,6 +46,8 @@ carousels.forEach((carousel) => {
 
   const update = (nextIndex, behavior = 'smooth') => {
     const lastIndex = maxIndex();
+
+    // Circular navigation: wrap in both directions.
     if (lastIndex === 0) {
       currentIndex = 0;
     } else if (nextIndex < 0) {
@@ -57,6 +71,7 @@ carousels.forEach((carousel) => {
 
   const startAutoRotate = () => {
     stopAutoRotate();
+    // Respect the visitor's operating-system reduced-motion preference.
     if (reduceMotion.matches || maxIndex() === 0) return;
     autoRotateTimer = window.setInterval(() => {
       update(currentIndex >= maxIndex() ? 0 : currentIndex + 1);
@@ -78,6 +93,7 @@ carousels.forEach((carousel) => {
     restartAutoRotate();
   });
 
+  // Keyboard support while the carousel viewport is focused.
   viewport.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
@@ -91,6 +107,7 @@ carousels.forEach((carousel) => {
     }
   });
 
+  // Basic horizontal swipe support for touch devices.
   viewport.addEventListener('touchstart', (event) => {
     stopAutoRotate();
     touchStartX = event.changedTouches[0]?.clientX ?? null;
@@ -105,6 +122,7 @@ carousels.forEach((carousel) => {
     startAutoRotate();
   }, { passive: true });
 
+  // Pause automatic movement while someone is actively inspecting/interacting.
   carousel.addEventListener('mouseenter', stopAutoRotate);
   carousel.addEventListener('mouseleave', startAutoRotate);
   carousel.addEventListener('focusin', stopAutoRotate);
@@ -112,6 +130,7 @@ carousels.forEach((carousel) => {
     if (!carousel.contains(event.relatedTarget)) startAutoRotate();
   });
 
+  // Do not keep advancing an invisible browser tab.
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) stopAutoRotate();
     else startAutoRotate();
@@ -119,6 +138,7 @@ carousels.forEach((carousel) => {
 
   reduceMotion.addEventListener?.('change', startAutoRotate);
 
+  // Recalculate scroll positions after a responsive layout change.
   window.addEventListener('resize', () => {
     update(currentIndex, 'auto');
     startAutoRotate();

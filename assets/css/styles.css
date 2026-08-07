@@ -1,3 +1,16 @@
+/*
+  SUPRAJ GUNDA PORTFOLIO — SHARED STYLES
+
+  Maintenance map:
+  - Edit the color palette and fonts in :root first; most of the site inherits from it.
+  - .band-* classes are the reusable horizontal banner colors used across all pages.
+  - Navigation/header styles are near the top of this file.
+  - Research/Industry/Honors/Activities row layouts are grouped in the middle/bottom.
+  - About-page Game of Life, biography, modal, and carousel styles are grouped near the end.
+  - Responsive changes are inside @media blocks; the main mobile breakpoint is 780px.
+
+  The HTML comments on each page explain which classes to duplicate when adding content.
+*/
 
 :root {
   --ink: #11110f;
@@ -8,6 +21,7 @@
   --sky: #93c7f5;
   --peach: #f39a70;
   --lavender: #c8b7ef;
+  --mint: #b8d8cd;
   --soft-blue: #dcecf8;
   --soft-green: #dfe9d4;
   --soft-peach: #f3ddd0;
@@ -40,6 +54,7 @@ code { font-family: var(--mono); font-size: .78rem; }
 .skip-link { position: fixed; z-index: 1000; left: 1rem; top: 1rem; padding: .7rem 1rem; background: var(--ink); color: white; transform: translateY(-180%); }
 .skip-link:focus { transform: none; }
 
+/* SHARED HEADER + TOP NAVIGATION */
 .site-header { position: sticky; z-index: 100; top: 0; background: var(--paper); border-bottom: 1px solid var(--ink); }
 .nav-shell { min-height: 76px; display: grid; grid-template-columns: minmax(260px, .75fr) 1.25fr; align-items: stretch; }
 .site-name { display: flex; align-items: center; gap: 1rem; padding: 0 clamp(1.25rem, 3vw, 3rem); border-right: 1px solid var(--ink); font-size: 1.05rem; font-weight: 600; letter-spacing: -.025em; }
@@ -53,6 +68,8 @@ code { font-family: var(--mono); font-size: .78rem; }
 .nav-links a:hover, .nav-links a[aria-current="page"] { background: var(--ink); color: var(--paper); text-decoration: none; }
 .nav-toggle { display: none; }
 
+/* HORIZONTAL BAND SYSTEM
+   Use a band-* color class on a section/article to reuse the site's banner palette. */
 .band, .page-title-band, .project-band, .experience-band, .honor-band, .activity-band, .cv-band, .index-band { border-bottom: 1px solid var(--ink); }
 .band-inner { width: min(100%, var(--max)); margin-inline: auto; padding: clamp(3.5rem, 7vw, 7rem) clamp(1.25rem, 4vw, 4rem); }
 .band-paper { background: var(--paper); }
@@ -67,11 +84,14 @@ code { font-family: var(--mono); font-size: .78rem; }
 .band-ink { background: var(--ink); color: var(--paper-2); }
 .band-ink h1, .band-ink h2, .band-ink h3 { color: var(--paper-2); }
 
+/* Bracketed metadata labels. CSS adds the [ and ] automatically. */
 .micro-label { margin: 0 0 1.5rem; font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
 .micro-label::before { content: "[ "; }
 .micro-label::after { content: " ]"; }
 .micro-label.light { color: rgba(255,255,255,.62); }
 
+/* Legacy/optional hero helpers from an earlier iteration. They are not used by the current
+   HTML, but can be reused if a large split hero is added later. */
 .hero-layout { min-height: calc(100svh - 77px); display: grid; grid-template-columns: 1.1fr .9fr; align-items: end; gap: clamp(3rem, 8vw, 9rem); }
 .hero-title h1 { max-width: 920px; }
 .hero-summary { align-self: center; max-width: 590px; padding-top: 4rem; }
@@ -79,6 +99,8 @@ code { font-family: var(--mono); font-size: .78rem; }
 .hero-summary > p:not(.hero-role) { max-width: 510px; font-size: 1.05rem; }
 .text-links { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2.2rem; font-family: var(--mono); font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; }
 
+/* GAME OF LIFE BASE STYLES
+   Current About-page composition extends these with .home-life-* rules later in the file. */
 .life-layout { display: grid; grid-template-columns: .72fr 1.28fr; align-items: stretch; gap: clamp(2rem, 5vw, 5rem); }
 .life-intro { display: flex; flex-direction: column; }
 .life-intro h2 { margin-bottom: 2rem; }
@@ -93,6 +115,7 @@ code { font-family: var(--mono); font-size: .78rem; }
 .life-controls button:last-child { border-right: 0; }
 .life-controls button:hover { background: var(--sun); color: var(--ink); }
 
+/* Optional generic split/focus/index helpers retained for future editorial sections. */
 .split-layout { display: grid; grid-template-columns: .86fr 1.14fr; gap: clamp(3rem, 10vw, 11rem); }
 .band-heading h2 { max-width: 700px; }
 .prose-large { max-width: 780px; font-size: clamp(1.25rem, 2.2vw, 2rem); line-height: 1.35; letter-spacing: -.025em; }
@@ -110,9 +133,12 @@ code { font-family: var(--mono); font-size: .78rem; }
 .index-title { font-size: clamp(3.2rem, 8vw, 8rem); line-height: .9; letter-spacing: -.055em; }
 .index-arrow { font-size: clamp(2rem, 4vw, 4rem); }
 
+/* INNER PAGE TITLE BANNERS */
 .page-title-layout { min-height: 440px; display: grid; grid-template-columns: 1fr .6fr; align-items: end; gap: clamp(3rem, 9vw, 9rem); padding: clamp(4rem, 8vw, 8rem) clamp(1.25rem, 4vw, 4rem); }
 .page-title-layout > p, .cv-actions { max-width: 610px; margin: 0; font-size: clamp(1.15rem, 2vw, 1.7rem); line-height: 1.35; }
 
+/* RESEARCH PROJECT ROWS
+   HTML template/instructions are documented directly above .project-list in research.html. */
 .project-band { min-height: 560px; display: grid; grid-template-columns: .22fr .93fr .65fr; gap: clamp(2rem, 5vw, 5rem); padding: clamp(3rem, 6vw, 6rem) max(clamp(1.25rem, 4vw, 4rem), calc((100vw - var(--max))/2 + 4rem)); }
 .project-meta p, .experience-meta p { margin: .8rem 0 0; font-size: 1rem; font-weight: 600; }
 .project-number, .experience-meta > span, .honor-number, .activity-number, .cv-label > span { font-family: var(--mono); font-size: .72rem; }
@@ -128,12 +154,14 @@ code { font-family: var(--mono); font-size: .78rem; }
 .media-placeholder p { margin: 0; font-size: .86rem; }
 .media-icon { width: 58px; height: 58px; display: grid; place-items: center; border: 1px solid var(--ink); }
 
+/* INDUSTRY EXPERIENCE ROWS */
 .experience-band { min-height: 410px; display: grid; grid-template-columns: .26fr .64fr .8fr; gap: clamp(2rem, 5vw, 5rem); padding: clamp(3rem, 6vw, 6rem) max(clamp(1.25rem, 4vw, 4rem), calc((100vw - var(--max))/2 + 4rem)); }
 .experience-meta small { display: block; margin-top: .45rem; font-family: var(--mono); font-size: .67rem; text-transform: uppercase; }
 .experience-role h2 { max-width: 600px; }
 .experience-copy ul { max-width: 700px; font-size: 1.05rem; }
 .inline-link { display: inline-block; margin-top: 2rem; font-family: var(--mono); font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; }
 
+/* HONORS + ACTIVITIES ROWS */
 .honor-band { min-height: 350px; display: grid; grid-template-columns: .14fr .86fr .7fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; padding: clamp(3rem, 6vw, 6rem) max(clamp(1.25rem, 4vw, 4rem), calc((100vw - var(--max))/2 + 4rem)); }
 .honor-title h2 { max-width: 760px; }
 .honor-copy p { max-width: 600px; font-size: 1.05rem; }
@@ -156,6 +184,7 @@ code { font-family: var(--mono); font-size: .78rem; }
 .cv-content p { max-width: 760px; margin: .7rem 0 0; }
 .cv-content time { position: absolute; right: 0; top: 1.8rem; font-family: var(--mono); font-size: .68rem; text-transform: uppercase; }
 
+/* SHARED CONTACT FOOTER */
 .site-footer { border-bottom: 0; }
 .footer-grid { display: grid; grid-template-columns: 1fr .55fr; gap: 4rem; }
 .footer-grid h2 { max-width: 900px; }
@@ -225,7 +254,8 @@ code { font-family: var(--mono); font-size: .78rem; }
   .cv-content article { padding: .8rem 0; }
 }
 
-/* Home page composition */
+/* ABOUT PAGE: current home-page composition
+   These rules override/recompose the generic Game of Life and biography styles above. */
 .home-life {
   border-bottom: 1px solid var(--ink);
 }
@@ -359,13 +389,15 @@ code { font-family: var(--mono); font-size: .78rem; }
   }
 }
 
-/* Page-title variants without introductory blurbs */
+/* INNER PAGE TITLE VARIANT
+   Used because Research/Industry/Honors/Activities/CV intentionally have title-only banners. */
 .page-title-layout-single {
   grid-template-columns: 1fr;
   min-height: clamp(310px, 34vw, 440px);
 }
 
-/* Compact contact footer with visual labels */
+/* CONTACT LINKS + ICONS
+   The SVG icons live inline in each HTML footer; sizing/hover behavior is controlled here. */
 .footer-contact a {
   display: inline-flex;
   align-items: center;
@@ -392,7 +424,7 @@ code { font-family: var(--mono); font-size: .78rem; }
   opacity: .62;
 }
 
-/* Accessible visually hidden text */
+/* ACCESSIBILITY: text available to screen readers but visually hidden. */
 .sr-only {
   position: absolute !important;
   width: 1px !important;
@@ -405,7 +437,8 @@ code { font-family: var(--mono); font-size: .78rem; }
   border: 0 !important;
 }
 
-/* Game of Life information control and modal */
+/* ABOUT: Game of Life information button + light modal.
+   Modal text/video link are edited in index.html; open/close behavior is in main.js. */
 .life-info-button {
   position: absolute;
   z-index: 3;
@@ -492,7 +525,8 @@ code { font-family: var(--mono); font-size: .78rem; }
   text-transform: uppercase;
 }
 
-/* CV is intentionally presented only as the uploaded PDF */
+/* CV PAGE
+   CV is intentionally only a PDF embed. Change its path in cv.html, not by adding CV HTML here. */
 .cv-document-band {
   border-bottom: 1px solid var(--ink);
 }
@@ -530,11 +564,8 @@ code { font-family: var(--mono); font-size: .78rem; }
   }
 }
 
-/* Lab photo carousel */
-:root {
-  --mint: #b8d8cd;
-}
-
+/* ABOUT: Lab photo carousel.
+   Add/remove slide markup in index.html; carousel.js handles counting, wrapping, and timing. */
 .band-mint {
   background: var(--mint);
 }
@@ -673,13 +704,14 @@ code { font-family: var(--mono); font-size: .78rem; }
 }
 
 
-/* Industry product demo link */
+/* INDUSTRY: styling for external demo links such as the AI Camp video. */
 .experience-video-link {
   color: var(--ink);
 }
 
 
-/* Revised inner-page information hierarchy */
+/* INNER-PAGE METADATA HIERARCHY
+   Larger stacked lab/company labels and bracketed issuer/organization labels. */
 .project-meta .project-lab {
   margin: 1rem 0 0;
   font-size: clamp(1.45rem, 2.25vw, 2.35rem);
@@ -746,7 +778,7 @@ code { font-family: var(--mono); font-size: .78rem; }
   }
 }
 
-/* Online publication link */
+/* RESEARCH: external publication link used when a publisher page cannot be iframe-embedded. */
 .online-paper-link-wrap {
   display: flex;
   align-items: flex-start;
