@@ -1,4 +1,4 @@
-# Supraj Gunda Science + Technology Portfolio
+# Supraj Gunda Science Portfolio
 
 A static multi-page portfolio designed for GitHub Pages. There is no build step, framework, database, or server: the site is plain HTML, CSS, and JavaScript.
 
